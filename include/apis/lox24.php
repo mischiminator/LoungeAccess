@@ -42,12 +42,4 @@ function SendSMS($code, $phone)
     $response = curl_exec($curl);
     $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
-
-    $data = json_decode($response, JSON_OBJECT_AS_ARRAY);
-
-    if (201 === $code) {
-        echo 'Success: response data = ' . var_export($data, true);
-    } else {
-        echo "Error: code = {$code}, data = " . var_export($data, true);
-    }
 }
