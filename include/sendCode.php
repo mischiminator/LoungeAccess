@@ -19,7 +19,7 @@ do {
     $pinid = GetPinID($nukiid, $_POST['inputPhone']);
 } while ($pinid == 0);
 $DB->InsertCode($phoneID, $pinid, $code);
-#SendSMS($code, $phone);
+SendSMS($code, $phone);
 DisplayMessage($phone);
 
 function GetNewCode()
@@ -34,21 +34,22 @@ function GetNewCode()
     return $code;
 }
 
-function DisplayMessage($phone){
+function DisplayMessage($phone)
+{
     global $config;
-    ?>
+?>
 <form class="form-signin" method="POST">
     <div class="text-center mb-4">
         <img class="mb-4" src="<?= $config['logofile'] ?>" alt="" width="72" height="72">
         <h1 class="h1 mb-3">Gigamot Charger Lounge</h1>
         <h1 class="h3 mb-3" lang="de">Hallo,<br />
             Dein Code wurde gesendet an<br />
-            <strong><?=$phone?></strong><br />
+            <strong><?= $phone ?></strong><br />
             Schaue in deine Nachrichten/SMS App wie er lautet.
         </h1>
         <h1 class="h3 mb-3" lang="en">Hello,<br />
             Your code was sent to<br />
-            <strong><?=$phone?></strong><br />
+            <strong><?= $phone ?></strong><br />
             Please check your Messages/SMS app.
         </h1>
     </div>
@@ -57,4 +58,4 @@ function DisplayMessage($phone){
 </form>
     <?php
 }
-?>
+    ?>
